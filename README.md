@@ -109,15 +109,8 @@ L’objectif de cette analyse était d’identifier les **fuites dans le funnel 
 
 ---
 
-## 📁 Fichiers du repository
-
-- `queries/` → Toutes les requêtes SQL utilisées
-- `README.md` → (ce fichier)
-
----
-
 **Auteur** : Alice Plaquet  
 **Date** : Mars 2026  
 **Statut** : Projet de portfolio Data Analyst
 
-⭐ N’hésitez pas à laisser une étoile si ce projet vous plaît !
+
