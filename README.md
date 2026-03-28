@@ -38,29 +38,24 @@ L’objectif de cette analyse était d’identifier les fuites dans le funnel de
 
 - Toutes les requêtes ont été exécutées directement dans la console BigQuery  
 - Approche : Ask → Prepare → Process → Analyze → Share → Act  
-- Pas de Google Sheets ni de Looker Studio (analyse 100 % SQL)
+- Analyse 100 % SQL (aucun Google Sheets ni Looker Studio)
 
 ---
 
 ### 📈 Résultats clés
 
 **Funnel de conversion complet**  
-- View Item → Add to Cart : 20,47 %  
-- Add to Cart → Begin Checkout : 76,86 %  
-- Begin Checkout → Purchase : 45,58 %  
-- **Conversion globale :** 7,17 %
+- View Item → Add to Cart : **20,47 %**  
+- Add to Cart → Begin Checkout : **76,86 %**  
+- Begin Checkout → Purchase : **45,58 %**  
+- **Conversion globale :** **7,17 %**
 
 **KPIs business**  
-- CA total : 362 165 $  
-- Panier moyen : 63,63 $  
-- Nombre d’achats : 5 692
+- CA total : **362 165 $**  
+- Panier moyen : **63,63 $**  
+- Nombre d’achats : **5 692**
 
-**Top 5 produits** (extrait)  
-- Google Zip Hoodie F/C → 13 788 $  
-- Google Crewneck Sweatshirt Navy → 10 714 $  
-- etc.
-
-**Autres analyses réalisées** : performance par device, par pays, par canal d’acquisition, tendances temporelles (jour + heure).
+**Autres analyses** : Top produits, performance par device, par pays, par canal d’acquisition, tendances temporelles (jour + heure).
 
 ---
 
@@ -89,7 +84,7 @@ L’objectif de cette analyse était d’identifier les fuites dans le funnel de
 
 ### 📁 Fichiers du projet
 
-- `queries/` → **Toutes les 10 requêtes SQL** utilisées (funnel, KPIs, top produits, device, pays, etc.)  
+- `queries/` → **Toutes les 10 requêtes SQL** utilisées (funnel, KPIs, top produits, device, pays, trafic, temporalité…)  
 - `README.md` → Ce fichier
 
 **Auteur :** Alice Plaquet  
