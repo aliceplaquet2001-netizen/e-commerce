@@ -11,46 +11,36 @@
 ### 📋 Contexte business
 
 Le Google Merchandise Store est la boutique officielle en ligne de produits Google.  
-Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations interactives Plotly** pour identifier les fuites du funnel et les leviers de croissance du CA.
+Cette analyse combine **10 requêtes SQL** et **6 visualisations interactives Plotly** pour identifier les fuites du funnel et les leviers de croissance du CA.
 
 ---
 
-### 🎯 Objectifs
-
-- Analyser le funnel de conversion avec taux de drop-off  
-- Calculer les KPIs business  
-- Identifier top produits, devices, pays et canaux  
-- Détecter les tendances temporelles  
-- Créer des visualisations interactives (hover + zoom)
-
----
-
-### 📈 Visualisations interactives
+### 📈 Visualisations
 
 **1. Funnel de Conversion avec taux de drop-off**  
-[👉 Voir la version interactive](visualizations/01_funnel_interactif.html)
+![Funnel de Conversion](visualizations/newplot-2.png)
 
-**2. Top 15 Produits par Revenu (Treemap)**  
-[👉 Voir la version interactive](visualizations/02_top_products_treemap.html)
+**2. Top 15 Produits par Revenu**  
+![Top 15 Produits par Revenu](visualizations/newplot-3.png)
 
 **3. Chiffre d'Affaires par Heure de la Journée**  
-[👉 Voir la version interactive](visualizations/03_heure.html)
+![CA par Heure](visualizations/newplot-4.png)
 
 **4. CA par Type de Device**  
-[👉 Voir la version interactive](visualizations/04_device.html)
+![CA par Device](visualizations/newplot-5.png)
 
 **5. CA par Pays (Top 10)**  
-[👉 Voir la version interactive](visualizations/05_pays.html)
+![CA par Pays](visualizations/newplot-6.png)
 
 **6. CA par Canal d'Acquisition**  
-[👉 Voir la version interactive](visualizations/06_canal.html)
+![CA par Canal](visualizations/newplot-7.png)
 
 ---
 
 ### 💡 Insights clés
 
-- Conversion globale très faible (~1,64 %) → énorme opportunité  
-- Desktop = **56,68 %** du CA  
+- Conversion globale très faible (~1,64 %) → énorme opportunité d’amélioration  
+- Desktop représente **56,68 %** du CA  
 - États-Unis = **43,59 %** du CA  
 - Mercredi est le jour le plus rentable  
 - Heures à fort panier moyen : nuit et tôt le matin
@@ -73,7 +63,7 @@ Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations inter
 ### 📁 Fichiers du projet
 
 - `queries/` → Les 10 requêtes SQL  
-- `visualizations/` → Les 6 graphiques interactifs Plotly (.html)  
+- `visualizations/` → Les 6 graphiques (PNG)  
 - `README.md` → Ce fichier
 
 **Auteur :** Alice Plaquet  
