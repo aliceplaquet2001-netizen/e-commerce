@@ -11,7 +11,17 @@
 ### 📋 Contexte business
 
 Le Google Merchandise Store est la boutique officielle en ligne de produits Google.  
-Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations Plotly** pour identifier les fuites du funnel et les leviers de croissance du CA.
+Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations interactives Plotly** pour identifier les fuites du funnel et les leviers de croissance du CA.
+
+---
+
+### 🎯 Objectifs
+
+- Analyser le funnel de conversion avec taux de drop-off  
+- Calculer les KPIs business  
+- Identifier top produits, devices, pays et canaux  
+- Détecter les tendances temporelles  
+- Créer des visualisations interactives (hover + zoom)
 
 ---
 
@@ -37,10 +47,18 @@ Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations Plotl
 
 ---
 
+### ⚙️ Challenges techniques surmontés
+
+- Gestion de la structure imbriquée de GA4 (`event_params`, `items`, `ecommerce`) avec `UNNEST`  
+- Création d’un funnel utilisateur-level en SQL pur  
+- Passage de l’analyse SQL à des visualisations interactives Plotly
+
+---
+
 ### 💡 Insights clés
 
-- Conversion globale très faible (~1,64 %) → énorme opportunité d’amélioration  
-- Desktop représente **56,68 %** du CA  
+- Conversion globale très faible (~1,64 %) → énorme opportunité  
+- Desktop = **56,68 %** du CA  
 - États-Unis = **43,59 %** du CA  
 - Mercredi est le jour le plus rentable  
 - Heures à fort panier moyen : nuit et tôt le matin
@@ -56,7 +74,7 @@ Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations Plotl
 | Renforcer le SEO Google Organic                     | Renforcer canal n°1    |
 | Optimiser l’expérience mobile                       | +5–10 % de CA          |
 | Créer des bundles sur les hoodies/sweatshirts       | Augmentation AOV       |
-| Campagnes locales sur Inde, Canada, etc.           | Croissance marchés     |
+| Campagnes locales sur Inde, Canada, Europe          | Croissance marchés     |
 
 ---
 
@@ -64,6 +82,7 @@ Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations Plotl
 
 - `queries/` → Les 10 requêtes SQL  
 - `visualizations/` → Les 6 graphiques PNG  
+- **[Notebook Colab complet](https://colab.research.google.com/drive/1Zr6VvXp9oC5WyJS7iqjwcgEvUjzLiQ_m?usp=sharing)** → Code Python + visualisations interactives  
 - `README.md` → Ce fichier
 
 **Auteur :** Alice Plaquet  
