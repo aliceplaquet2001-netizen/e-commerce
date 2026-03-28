@@ -1,1 +1,104 @@
+SELECT 
+  COUNT(*) AS nb_evenements,
+  MIN(DATE(event_timestamp)) AS date_debut,
+  MAX(DATE(event_timestamp)) AS date_fin,
+  COUNT(DISTINCT user_pseudo_id) AS nb_utilisateurs_uniques,
+  COUNT(DISTINCT CONCAT(user_pseudo_id, (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id'))) AS nb_sessions
+FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`;
+SELECT 
+  event_name,
+  COUNT(*) AS nb_evenements,
+  COUNT(DISTINCT user_pseudo_id) AS nb_utilisateurs,
+  ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS pourcentage
+FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+GROUP BY event_name
+ORDER BY nb_evenements DESC;
+WITH funnel AS (
+  SELECT 
+    user_pseudo_id,
+    MAX(CASE WHEN event_name = 'view_item' THEN 1 ELSE 0 END) AS view_item,
+    MAX(CASE WHEN event_name = 'add_to_cart' THEN 1 ELSE 0 END) AS add_to_cart,
+    MAX(CASE WHEN event_name = 'begin_checkout' THEN 1 ELSE 0 END) AS begin_checkout,
+    MAX(CASE WHEN event_name = 'purchase' THEN 1 ELSE 0 END) AS purchase
+  FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+  GROUP BY user_pseudo_id
+)
+SELECT 
+  COUNT(*) AS nb_utilisateurs,
+  ROUND(AVG(add_to_cart) * 100, 2) AS view_to_add_pct,
+  ROUND(AVG(begin_checkout) * 100, 2) AS add_to_checkout_pct,
+  ROUND(AVG(purchase) * 100, 2) AS checkout_to_purchase_pct
+FROM funnel;
+SELECT 
+  COUNT(*) AS nb_achats,
+  ROUND(SUM(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS CA_total,
+  ROUND(AVG(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS panier_moyen,
+  ROUND(SUM(COALESCE(ecommerce.purchase_revenue, 0)) / COUNT(DISTINCT user_pseudo_id), 2) AS revenu_par_utilisateur
+FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+WHERE event_name = 'purchase';
+SELECT 
+  item.item_name,
+  COUNT(*) AS nb_ventes,
+  ROUND(SUM(item.item_revenue), 2) AS CA_produit,
+  ROUND(AVG(item.item_revenue), 2) AS prix_moyen
+FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`,
+UNNEST(items) AS item
+WHERE event_name = 'purchase'
+GROUP BY item.item_name
+ORDER BY CA_produit DESC
+LIMIT 10;
+SELECT 
+  device.category AS device_type,
+  COUNT(*) AS nb_sessions,
+  ROUND(SUM(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS CA_total,
+  ROUND(AVG(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS panier_moyen,
+  ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS pourcentage_sessions
+FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+WHERE event_name = 'purchase'
+GROUP BY device.category
+ORDER BY CA_total DESC;
+SELECT 
+  geo.country AS pays,
+  COUNT(*) AS nb_achats,
+  ROUND(SUM(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS CA_total,
+  ROUND(AVG(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS panier_moyen,
+  ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS pourcentage_CA
+FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+WHERE event_name = 'purchase'
+GROUP BY geo.country
+ORDER BY CA_total DESC
+LIMIT 10;
+SELECT 
+  traffic_source.medium AS medium,
+  traffic_source.source AS source,
+  COUNT(*) AS nb_achats,
+  ROUND(SUM(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS CA_total,
+  ROUND(AVG(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS panier_moyen
+FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+WHERE event_name = 'purchase'
+GROUP BY traffic_source.medium, traffic_source.source
+ORDER BY CA_total DESC
+LIMIT 10;
+SELECT 
+  FORMAT_DATE('%A', DATE(event_timestamp)) AS jour_semaine,
+  COUNT(*) AS nb_achats,
+  ROUND(SUM(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS CA_total,
+  ROUND(AVG(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS panier_moyen
+FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+WHERE event_name = 'purchase'
+GROUP BY jour_semaine
+ORDER BY 
+  CASE jour_semaine 
+    WHEN 'Monday' THEN 1 WHEN 'Tuesday' THEN 2 WHEN 'Wednesday' THEN 3 
+    WHEN 'Thursday' THEN 4 WHEN 'Friday' THEN 5 WHEN 'Saturday' THEN 6 
+    WHEN 'Sunday' THEN 7 END;
+SELECT 
+  EXTRACT(HOUR FROM event_timestamp) AS heure,
+  COUNT(*) AS nb_achats,
+  ROUND(SUM(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS CA_total,
+  ROUND(AVG(COALESCE(ecommerce.purchase_revenue, 0)), 2) AS panier_moyen
+FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+WHERE event_name = 'purchase'
+GROUP BY heure
+ORDER BY heure;
 
