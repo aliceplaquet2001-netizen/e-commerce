@@ -47,32 +47,40 @@ Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations inter
 
 ---
 
-### 📊 KPIs chiffrés absolus (période nov. 2020 – jan. 2021)
+### 📊 KPIs chiffrés absolus (nov. 2020 – jan. 2021)
 
-- **CA total** : **362 165 $**
-- **Nombre d’achats** : **5 692**
-- **Panier moyen** : **63,63 $**
-- **Utilisateurs uniques** : **270 154**
-- **Sessions** : **360 129**
-- **Événements** : **4,29 millions**
-- **Conversion globale** : **1,64 %** (dernière étape du funnel)
+- **CA total** : **362 165 $**  
+- **Nombre d’achats** : **5 692**  
+- **Panier moyen** : **63,63 $**  
+- **Utilisateurs uniques** : **270 154**  
+- **Sessions** : **360 129**  
+- **Événements** : **4,29 millions**  
+- **Conversion globale** : **1,64 %**
 
 ---
 
-### 👥 Segmentation clients simple (basée sur les données GA4)
+### 👥 Segmentation clients simple
 
 | Segment                  | % du CA | CA moyen par client | Caractéristiques principales |
 |--------------------------|---------|---------------------|------------------------------|
 | **Desktop Premium**      | 56,7 %  | 64,73 $             | Forte contribution, panier élevé |
-| **Mobile**               | 41,4 %  | 62,32 $             | Volume important, conversion proche du desktop |
+| **Mobile**               | 41,4 %  | 62,32 $             | Volume important |
 | **Tablet**               | 2,0 %   | 59,30 $             | Marginal |
 | **Top Pays (US + Inde + Canada)** | ~61 % | 66–70 $             | Meilleurs paniers moyens |
 
 ---
 
+### ⚙️ Challenges techniques surmontés
+
+- Gestion de la structure imbriquée GA4 (`event_params`, `items`, `ecommerce`) avec `UNNEST`  
+- Création d’un funnel utilisateur-level en SQL pur  
+- Passage de l’analyse SQL à des visualisations interactives Plotly
+
+---
+
 ### 💡 Insights clés
 
-- Conversion globale très faible (~1,64 %) → énorme levier d’amélioration du funnel  
+- Conversion globale très faible (~1,64 %) → énorme opportunité d’amélioration du funnel  
 - Desktop domine le CA mais le mobile est presque aussi performant en panier moyen  
 - États-Unis = **43,59 %** du CA total  
 - Mercredi est le jour le plus rentable ; les heures de nuit et tôt le matin offrent les meilleurs paniers moyens
