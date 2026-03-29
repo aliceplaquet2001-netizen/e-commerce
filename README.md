@@ -1,5 +1,5 @@
 # Analyse approfondie des ventes et optimisation de la rentabilité  
-**Google Merchandise Store (GA4 Sample) - Version Boostée**
+**Google Merchandise Store (GA4 Sample)**
 
 **Outils :** BigQuery (SQL) + Python (Pandas + Plotly)  
 **Dataset :** bigquery-public-data.ga4_obfuscated_sample_ecommerce  
@@ -19,9 +19,9 @@ Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations inter
 
 - Analyser le funnel de conversion avec taux de drop-off  
 - Calculer les KPIs business chiffrés  
-- Identifier top produits, devices, pays et canaux  
+- Identifier les top produits, devices, pays et canaux  
 - Détecter les tendances temporelles (jour + heure)  
-- Créer des visualisations interactives et une segmentation clients
+- Créer des visualisations claires et impactantes
 
 ---
 
@@ -61,27 +61,19 @@ Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations inter
 
 ### 👥 Segmentation clients simple
 
-| Segment                  | % du CA | CA moyen par client | Caractéristiques principales |
-|--------------------------|---------|---------------------|------------------------------|
-| **Desktop Premium**      | 56,7 %  | 64,73 $             | Forte contribution, panier élevé |
-| **Mobile**               | 41,4 %  | 62,32 $             | Volume important |
-| **Tablet**               | 2,0 %   | 59,30 $             | Marginal |
-| **Top Pays (US + Inde + Canada)** | ~61 % | 66–70 $             | Meilleurs paniers moyens |
-
----
-
-### ⚙️ Challenges techniques surmontés
-
-- Gestion de la structure imbriquée GA4 (`event_params`, `items`, `ecommerce`) avec `UNNEST`  
-- Création d’un funnel utilisateur-level en SQL pur  
-- Passage de l’analyse SQL à des visualisations interactives Plotly
+| Segment                        | % du CA | CA moyen par client | Caractéristiques principales          |
+|--------------------------------|---------|---------------------|---------------------------------------|
+| **Desktop Premium**            | 56,7 %  | 64,73 $             | Forte contribution, panier élevé      |
+| **Mobile**                     | 41,4 %  | 62,32 $             | Volume important                      |
+| **Tablet**                     | 2,0 %   | 59,30 $             | Marginal                              |
+| **Top Pays (US + Inde + Canada)** | ~61 % | 66–70 $             | Meilleurs paniers moyens              |
 
 ---
 
 ### 💡 Insights clés
 
 - Conversion globale très faible (~1,64 %) → énorme opportunité d’amélioration du funnel  
-- Desktop domine le CA mais le mobile est presque aussi performant en panier moyen  
+- Desktop domine le CA, mais le mobile est presque aussi performant en panier moyen  
 - États-Unis = **43,59 %** du CA total  
 - Mercredi est le jour le plus rentable ; les heures de nuit et tôt le matin offrent les meilleurs paniers moyens
 
