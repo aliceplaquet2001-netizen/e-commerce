@@ -96,7 +96,6 @@ Cette analyse combine **10 requêtes SQL avancées** et **6 visualisations inter
 
 - `queries/` → Les 10 requêtes SQL  
 - `visualizations/` → Les 6 graphiques PNG  
-- **[Notebook Colab complet](https://colab.research.google.com/drive/1Zr6VvXp9oC5WyJS7iqjwcgEvUjzLiQ_m?usp=sharing)** → Code Python + visualisations interactives  
 - `README.md` → Ce fichier
 
 **Auteur :** Alice Plaquet  
